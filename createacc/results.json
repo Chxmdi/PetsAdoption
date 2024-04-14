@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Benny",
+    "type": "Dog",
+    "age": "under1",
+    "gender": "male",
+    "breed": "labrador",
+    "getsAlongWith": [
+      "children",
+      "adults",
+      "dogs"
+    ],
+    "description": "Friendly and energetic, loves to play fetch!",
+    "image": "/images/dog.jpg"
+  },
+  {
+    "name": "Whiskers",
+    "type": "Cat",
+    "age": "over3",
+    "gender": "female",
+    "breed": "persian",
+    "getsAlongWith": [
+      "adults",
+      "cats"
+    ],
+    "description": "Calm and loving, enjoys long naps in sunny spots.",
+    "image": "/images/cat.jpg"
+  }
+]

@@ -1,0 +1,15 @@
+[
+    {
+        "type": "dog",
+        "age": "under30",
+        "gender": "male",
+        "breed": "labrador",
+        "image": "/public/doggy.png"
+    },
+    {
+        "type": "cat",
+        "age": "under18",
+        "gender": "female",
+        "breed": "na"
+    }
+]

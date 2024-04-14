@@ -1,0 +1,17 @@
+0:null:dog:21
+2:null:mouse:3
+3:null:chicken:11
+4:null:chicken:11
+6:chimdi:dog:21
+6:null:dog:21
+7:null:sss:12
+8:null:sss:12
+9:null:sss:12
+11:null:dog:21
+12:chimdi:dog:21
+13:chimdi:sss:21
+14:chimdi:dog:12
+15:chimdi:dog:22
+16:chimdi:dog:22:undefined:undefined
+17:chimdi:dog:22:Male:labrador
+18:vella:dog:22:Male:labrador

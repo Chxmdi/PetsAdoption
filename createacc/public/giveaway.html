@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home4All</title>
+  
+    <link rel="stylesheet" href="styleeight.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="indexeight.html"><img src="logo.jpg"></a>
+        </div>
+        <h1>Home4All</h1>
+        <p> <span id="currentDateTime"></span></p>
+        <div id="error-message" style="color: red;"></div>
+
+    </header>
+    <script>
+      
+        function updateDateTime() {
+          const currentDateTime = new Date();
+          const formattedDateTime = currentDateTime.toLocaleString(); 
+          
+          document.getElementById("currentDateTime").textContent = formattedDateTime;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      </script>
+    <nav class="side-menu">
+        <ul>
+            <li><a href="indexeight.html">Home</a></li>
+            
+            <li><a href="findadog.html">Find a dog/cat</a></li>
+            <li><a href="dogcare.html">Dog Care</a></li>
+            <li><a href="catcare.html">Cat Care</a></li>
+            <li><a href="giveaway.html">Pet give away</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="index.html">Create Account</a></li>
+        </ul>
+    </nav>
+    
+    <main class="content">
+        <form>
+
+            <label for="email">Cat or Dog</label>
+      <input type="type" name="type" id="type">
+      <br><br>
+            Age
+            <select name="age" id="age">
+              <option value="under18">Less than 18</option>
+              <option value="under30">Between 18 and 30</option>
+              <option value="under50">Between 30 and 50</option>
+            </select>
+      <br><br>
+      Preferred Gender 
+      <input type="radio" name="gender" id="male"> Female
+      <input type="radio" name="gender" id="Female"> Male
+      <input type="radio" name="gender" id="dm"> Doesn't Matter
+      <br><br>
+      Breed of Dog or cat
+      <select name="breed" id="breed">
+        <option value="canine">Canine</option>
+        <option value="rotweiler">Rotweiler</option>
+        <option value="german-shepherd">German Shepherd</option>
+        <option value="mixed-breed">Mixed Breed</option>
+        <option value="na">Doesn't matter</option>
+      </select>
+      <br><br>
+
+      Gets along with
+      <input type="checkbox">Children
+      <input type="checkbox">Adults
+      <input type="checkbox">Cats
+      <input type="checkbox">Dogs
+      <br><br>
+
+      <label for="fname">First Name</label>
+      <input type="text" name="fname" id="fname">
+      <br><br>
+      <label for="familyname">Family Name</label>
+      <input type="text" name="familyname" id="familyname">
+      <br><br>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email">
+      <br><br>
+      <p><label for="info">Tell us about your pet</label></p>
+      <textarea id="info" name="info" rows="4" cols="info"></textarea>
+      <br><br>
+      
+      <input type="submit" value="Submit" class="button">
+                <input type="reset" value="Clear" class="button">
+        </form>
+        
+    </main>
+
+    <footer class="footer"> <a href="privacy.html">Privacy/Disclaimer Statement</a> </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                
+                event.preventDefault();
+                
+                var errorMessage = "";
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+                
+                
+                if (!document.getElementById('type').value.trim()) {
+                    errorMessage += "Please select Cat or Dog.<br>";
+                }
+                if (!document.getElementById('fname').value.trim()) {
+                    errorMessage += "First Name cannot be blank.<br>";
+                }
+                if (!document.getElementById('familyname').value.trim()) {
+                    errorMessage += "Family Name cannot be blank.<br>";
+                }
+                if (!document.getElementById('email').value.trim() || !emailRegex.test(document.getElementById('email').value.trim())) {
+                    errorMessage += "Please enter a valid Email address.<br>";
+                }
+                if (!document.getElementById('info').value.trim()) {
+                    errorMessage += "Tell us about your pet cannot be blank.<br>";
+                }
+                
+               
+                if (errorMessage) {
+                    document.getElementById('error-message').innerHTML = errorMessage;
+                } else {
+                    form.submit(); 
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>
+

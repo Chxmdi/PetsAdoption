@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home4All</title>
+    
+    <link rel="stylesheet" href="styleeight.css">
+</head>
+
+<body>
+  
+    <header>
+        <div class="logo">
+            <a href="indexeight.html"><img src="logo.jpg"></a>
+        </div>
+        <h1>Home4All</h1>
+        <p> <span id="currentDateTime"></span></p>
+    </header>
+    <script>
+      
+        function updateDateTime() {
+          const currentDateTime = new Date();
+          const formattedDateTime = currentDateTime.toLocaleString(); 
+          
+          document.getElementById("currentDateTime").textContent = formattedDateTime;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      </script>
+    <nav class="side-menu">
+        <ul>
+            <li><a href="indexeight.html">Home</a></li>
+           
+            <li><a href="findadog.html">Find a dog/cat</a></li>
+            <li><a href="dogcare.html">Dog Care</a></li>
+            <li><a href="catcare.html">Cat Care</a></li>
+            <li><a href="giveaway.html">Pet give away</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="index.html">Create Account</a></li>
+        </ul>
+    </nav>
+    
+    <main class="content">
+        <body>
+            <a href="login.html">login</a>
+            <a href="petForm.html">Pet-Form</a>
+            <a href="findadog.html">Pets</a>
+            <h1>Create Account</h1>
+            <form id="createAccountForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <small>Username can contain only letters and digits.</small><br><br>
+        
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <small>Password must be at least 4 characters long, include at least one letter and one digit.</small><br><br>
+        
+                <button type="button" onclick="submitAccountCreation()">Create Account</button>
+            </form>
+        
+            <div id="message"></div>
+        
+            <script src="script.js"></script>
+        </body>
+        
+            
+        
+    </main>
+
+    <footer class="footer"> <a href="privacy.html">Privacy/Disclaimer Statement</a> </footer>
+</body>
+
+</html>
+

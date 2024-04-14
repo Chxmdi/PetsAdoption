@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Pet Info</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="indexeight.html"><img src="logo.jpg"></a>
+        </div>
+        <h1>Home4All</h1>
+        <p> <span id="currentDateTime"></span></p>
+        <link rel="stylesheet" href="styleeight.css">
+    </header>
+    <script>
+      
+        function updateDateTime() {
+          const currentDateTime = new Date();
+          const formattedDateTime = currentDateTime.toLocaleString(); 
+          
+          document.getElementById("currentDateTime").textContent = formattedDateTime;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      </script>
+    <nav class="side-menu">
+        <ul>
+            <li><a href="indexeight.html">Home</a></li>
+           
+            <li><a href="findadog.html">Find a dog/cat</a></li>
+            <li><a href="dogcare.html">Dog Care</a></li>
+            <li><a href="catcare.html">Cat Care</a></li>
+            <li><a href="giveaway.html">Pet give away</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="index.html">Create Account</a></li>
+        </ul>
+    </nav>
+    
+    
+        
+            
+        
+    
+
+    <footer class="footer"> <a href="privacy.html">Privacy/Disclaimer Statement</a> </footer>
+
+
+    <h1>Submit Pet Information</h1>
+    <form id="petForm">
+        <label for="type">Pet Type:</label>
+        <input type="text" id="type" name="type" required><br><br>
+
+        <label for="age">Pet Age:</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="gender">Pet Gender:</label>
+        <input type="text" id="gender" placeholder=""><br>
+
+        <label for="breed">Pet Breed:</label>
+        <input type="text" id="breed" placeholder=""><br>
+
+        <button type="button" onclick="submitPet()">Submit Pet</button>
+    </form>
+
+    <div id="petMessage"></div>
+    <button id="logoutButton">Log Out</button>
+<div id="logoutMessage"></div>
+
+<script>
+document.getElementById('logoutButton').addEventListener('click', function() {
+    fetch('/logout')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('logoutMessage').innerText = data.message;
+        if (data.success) {
+            setTimeout(() => {
+                window.location.href = 'index.html'; // Redirect to the index page or '/login.html' as needed
+            }, 2000); // Redirect after 2 seconds to allow the user to read the message
+        }
+    })
+    .catch(error => console.error('Logout failed:', error));
+});
+</script>
+
+
+    <script src="petForm.js"></script>
+</body>
+</html>

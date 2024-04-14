@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to Post Pets</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="indexeight.html"><img src="logo.jpg"></a>
+        </div>
+        <h1>Home4All</h1>
+        <p> <span id="currentDateTime"></span></p>
+        <link rel="stylesheet" href="styleeight.css">
+    </header>
+    <script>
+      
+        function updateDateTime() {
+          const currentDateTime = new Date();
+          const formattedDateTime = currentDateTime.toLocaleString(); 
+          
+          document.getElementById("currentDateTime").textContent = formattedDateTime;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      </script>
+    <nav class="side-menu">
+        <ul>
+            <li><a href="indexeight.html">Home</a></li>
+           
+            <li><a href="findadog.html">Find a dog/cat</a></li>
+            <li><a href="dogcare.html">Dog Care</a></li>
+            <li><a href="catcare.html">Cat Care</a></li>
+            <li><a href="giveaway.html">Pet give away</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="index.html">Create Account</a></li>
+        </ul>
+    </nav>
+    
+    
+        
+            
+        
+    
+
+    <footer class="footer"> <a href="privacy.html">Privacy/Disclaimer Statement</a> </footer>
+    <h1>Login</h1>
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="button" onclick="submitLogin()">Login</button>
+    </form>
+
+    <div id="loginMessage"></div>
+
+    <script src="login.js"></script>
+</body>
+</html>
+

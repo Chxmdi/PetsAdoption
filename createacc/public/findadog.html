@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home4All</title>
+    <span id="currentDateTime"></span>
+  
+    <link rel="stylesheet" href="styleeight.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="indexeight.html"><img src="logo.jpg"></a>
+        </div>
+        <h1>Home4All</h1>
+        <p> <span id="currentDateTime"></span></p>
+        <div id="error-message" style="color: red;"></div>
+
+        
+    </header>
+    <script>
+      
+        function updateDateTime() {
+          const currentDateTime = new Date();
+          const formattedDateTime = currentDateTime.toLocaleString(); 
+          
+          document.getElementById("currentDateTime").textContent = formattedDateTime;
+        }
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+      </script>
+    <nav class="side-menu">
+        <ul>
+            <li><a href="indexeight.html">Home</a></li>
+           
+            <li><a href="findadog.html">Find a dog/cat</a></li>
+            <li><a href="dogcare.html">Dog Care</a></li>
+            <li><a href="catcare.html">Cat Care</a></li>
+            <li><a href="giveaway.html">Pet give away</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
+            <li><a href="index.html">Create Account</a></li>
+        </ul>
+    </nav>
+    
+    <main class="content">
+        <form id="myform" action="/search-pets" method="POST">
+            Cat or Dog:
+            <input type="text" name="type" id="type">
+            <br><br>
+            Preferred age:
+            <select name="age" id="age">
+                <option value="">Select Age</option>
+                <option value="under18">Less than 18 months</option>
+                <option value="under30">Between 18 and 30 months</option>
+                <option value="under50">Between 30 and 50 months</option>
+              </select>
+              
+            <br><br>
+            Preferred Gender:
+            <input type="radio" name="gender" value="female" id="female"> Female
+            <input type="radio" name="gender" value="male" id="male"> Male
+            <input type="radio" name="gender" value="dm" id="dm"> Doesn't Matter
+            <br><br>
+            Breed of Dog or cat:
+            <select name="breed" id="breed">
+                <option value="">Select breed</option>
+                <option value="labrador">Labrador</option>
+                <option value="persian">Persian Cat</option>
+                <option value="na">Doesn't matter</option>
+            </select>
+            <br><br>
+            Gets along with:
+            <input type="checkbox" name="getsAlongWith" value="children">Children
+            <input type="checkbox" name="getsAlongWith" value="adults">Adults
+            <input type="checkbox" name="getsAlongWith" value="cats">Cats
+            <input type="checkbox" name="getsAlongWith" value="dogs">Dogs
+            <br><br>
+            <input type="submit" value="Submit" class="button">
+            <input type="reset" value="Clear" class="button">
+        </form>
+        
+        
+        <div id="results">
+            <!-- Filtered pets will be displayed here -->
+        </div>
+        
+    </main>
+
+    <footer class="footer"> <a href="privacy.html">Privacy/Disclaimer Statement</a> </footer>
+
+    <script>
+        
+        function validateForm() {
+            var type = document.getElementById('type').value;
+            var age = document.getElementById('age').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var breed = document.getElementById('breed').value;
+            var errorMessage = document.getElementById('error-message');
+    
+            
+            if (!type || !age || !gender || !breed) {
+                errorMessage.textContent = 'Please fill in all required fields.';
+                return false; 
+            }
+    
+            
+            errorMessage.textContent = '';
+            return true;
+        }
+    
+        
+        
+        document.getElementById('myform').addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (!validateForm()) {
+        return false;
+    }
+
+    const formData = new FormData(document.getElementById('myform'));
+    fetch('/search-pets', {
+        method: 'POST',
+        body: new URLSearchParams(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        displayPets(data); // Function to handle the display of data
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+function displayPets(pets) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = ''; // Clear previous results
+
+    if (pets.length > 0) {
+        pets.forEach(pet => {
+            const petDiv = document.createElement('div');
+            petDiv.innerHTML = `<h4>${pet.type.toUpperCase()}</h4>
+                                <p>Age: ${pet.age.replace('under', 'Under ')} years</p>
+                                <p>Gender: ${pet.gender.charAt(0).toUpperCase() + pet.gender.slice(1)}</p>
+                                <p>Breed: ${pet.breed.charAt(0).toUpperCase() + pet.breed.slice(1)}</p>`;
+            resultsDiv.appendChild(petDiv);
+        });
+    } else {
+        resultsDiv.innerHTML = '<p>No pets found matching your criteria.</p>';
+    }
+}
+</script>
+
+    
+</body>
+
+</html>
+
